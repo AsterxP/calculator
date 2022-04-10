@@ -13,94 +13,28 @@ header
 }
 
 .display {
-  grid-area: display;
   background-color: lightgray;
   color: black;
-  font-size: 25px;;
+  font-size: 25px;
+  width: 500px;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.nine {
-  grid-area: nine;
-}
-
-.eight {
-  grid-area: eight;
-}
-
-.seven {
-  grid-area: seven;
-}
-
-.six {
-  grid-area: six;
-}
-
-.five {
-  grid-area: five;
-}
-
-.four {
-  grid-area: four;
-}
-
-.three {
-  grid-area: three;
-}
-
-.two {
-  grid-area: two;
-}
-
-.one {
-  grid-area: one;
-}
-
-.zero {
-  grid-area: zero;
-}
-
-.decimal {
-  grid-area: decimal;
-}
-
-.clear {
-  grid-area: clr;
-}
-
-.divide {
-  grid-area: divide;
-}
-
-.multiply {
-  grid-area: multiply;
-}
-
-.minus {
-  grid-area: minus;
-}
-
-.plus {
-  grid-area: plus;
+.keys {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {
+  padding-top: 5px;
   display: grid;
   width: 500px;
   text-align: center;
-  background-color:antiquewhite;
-  grid-gap: 20px;
-  grid-template: 
-      'display display display display'
-      'seven eight nine divide'
-      'four five six multiply'
-      'one two three minus'
-      'zero decimal clr plus';
-}
-
-.one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero, .clear, .decimal, .divide, .minus, .multiply, .plus {
   background-color: darkgoldenrod;
+  grid-gap: 5px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
