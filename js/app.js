@@ -4,6 +4,9 @@ const numbers = document.querySelectorAll(`.number`);
 const operator = document.querySelectorAll(`.operator`);
 const decimal = document.querySelector(`.decimal`);
 const clear = document.querySelector(`.clear`);
+const backspace = document.querySelector(`.backspace`);
+const equals = document.querySelector(`.equals`);
+
 
 //
 let total = 0;
@@ -36,8 +39,7 @@ operator.forEach((button) => {
       currentOperator = button.textContent
       total = b;
     }  
-    clearVar();
-    console.log(total)  
+    clearVar(); 
   });
 });
 
@@ -78,7 +80,7 @@ function operate(operator, a, b) {
     case `-`:
       total = subtract(a, b);
       break;
-    case `x`:
+    case `*`:
       total = multiply(a, b);
       break;
     case `/`:
@@ -87,4 +89,75 @@ function operate(operator, a, b) {
     default:
       total = `ERROR`
   };
+}
+
+backspace.addEventListener(`click`, () => {
+  if (b.slice(-1) === '.') {
+    haveDot = false;
+  }
+  b = b.slice(0, -1);
+  display.textContent = b;
+});
+
+
+equals.addEventListener('click', () => {
+  if(a && b && lastOperator){
+     operate(lastOperator, a, b);
+   } else {
+     return;
+   }  
+   clearVar();
+});
+
+window.addEventListener('keydown', (e) => {
+  if(
+    e.key === '0' ||
+    e.key === '1' ||
+    e.key === '2' ||
+    e.key === '3' ||
+    e.key === '4' ||
+    e.key === '5' ||
+    e.key === '6' ||
+    e.key === '7' ||
+    e.key === '8' ||
+    e.key === '9' ||
+    e.key === '.'   
+  ){
+    clickbutton(e.key);
+  } else if(
+    e.key === `*` ||
+    e.key === `+` ||
+    e.key === `-` ||
+    e.key === `/`    
+  ) {
+    clickOperation(e.key);
+  } else if(e.key == `Enter` || e.key == `=`) {
+    clickEqual();
+  } else if (e.key == `Backspace`) {
+    clickBackspace();
+  }
+})
+
+function clickbutton(key){
+  numbers.forEach( button => {
+    if(button.textContent === key) {
+      button.click();
+    }
+  })
+}
+
+function clickOperation(key){
+  operator.forEach( button => {
+    if(button.textContent === key) {
+      button.click();
+    }
+  })
+}
+
+function clickEqual(){
+  equals.click()
+}
+
+function clickBackspace(){
+  backspace.click()
 }

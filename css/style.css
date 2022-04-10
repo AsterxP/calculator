@@ -38,3 +38,11 @@ header
   grid-gap: 5px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+
+.clear {
+  grid-column: 1/3;
+}
+
+.backspace {
+  grid-column: 3/5;
+}
